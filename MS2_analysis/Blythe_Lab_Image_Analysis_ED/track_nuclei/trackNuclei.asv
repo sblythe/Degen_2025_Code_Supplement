@@ -1,0 +1,127 @@
+function [trackmat, centroids, meta, stats] = trackNuclei(varargin)
+
+% TRACKNUCLEI tracks nuclei in 2D using knnsearch. Assumes nucmask only 
+% encompasses a single nuclear cycle (no mitosis)
+%   Input variables
+%   NUCMASK (required): n x m x t matrix; max projected nuclear mask
+%   MAX_DIST (optional): scalar value representing max distance a single
+%   nuclei can move between frames; if no value is given max_dist is
+%   determined automatically based on size of nuclei
+%   
+%
+% created: 04/15/20
+% last updated: 06/29/20
+
+% initialize inputs
+nucmask = varargin{1};
+sizeT = size(nucmask,3);
+
+if length(varargin) == 1 || isempty(varargin{2})
+    % calculate max_dist based on object size at t-half
+    t_half = round(sizeT / 2);
+    cc = bwconncomp(nucmask(:,:,t_half));
+    obj_area = cellfun(@length, cc.PixelIdxList);
+    A = median(obj_area);
+
+    meta.meanRad = sqrt(A / pi);
+    meta.width = sqrt(A);
+    meta.meanArea = A; 
+    
+    max_dist = meta.width;
+else
+    max_dist = varargin{2};
+end
+meta.maxDist = max_dist;
+
+% find centroids
+str = sprintf('Labelling Nuclei Centers, T = %d', sizeT);
+h = waitbar(0, str);
+centroids = {};
+for t = 1:sizeT
+    X = t/(sizeT); waitbar(X);
+    cc = bwconncomp(nucmask(:,:,t));
+    rprops = regionprops(cc, 'Centroid');
+    centroids{t} = cat(1, rprops.Centroid);
+end
+close(h)
+
+
+% begin tracking
+trackmat = NaN(length(centroids{1}), sizeT);
+trackmat(:,1) = 1:length(centroids{1});
+
+str = sprintf('Tracking Nuclei, T = %d', sizeT);
+h = waitbar(0, str);
+
+for t = (1:sizeT-1)
+    X = t/(sizeT-1); waitbar(X);
+    
+    cent_t0 = centroids{t};
+    cent_t1 = centroids{t+1};
+    
+    % t0 objects are accounted for in trackmat
+    % want to find: t0 centroids in t1
+
+    if ~isempty(cent_t0) && ~isempty(cent_t1)
+        [I, D] = knnsearch(cent_t1, cent_t0); % I contains t1-indices for every element in t0
+        
+        % if dist < maxDist, object continues in next frame ~ track is
+        % considered continuous
+        contTrack = find(D <= max_dist); % t0-indices
+        contTrackID = I(contTrack); % t1-indices
+        contTrackD = D(contTrack);
+        
+        % find t0 object that are assigned to the same t1 object; remove t0
+        % object that is a farther distance away
+        [freq, uniq] = elFreq(contTrackID);
+        repeatID = uniq(freq > 1);
+        nullIdx = []; % indices to remove from contTrack; subset of contTrack indices
+        for i = 1:length(repeatID)
+            z = repeatID(i);
+            repeatIdx = find(contTrackID == z); % t0-indices
+            repeatD = contTrackD(repeatIdx);
+            [~, minIdx] = min(repeatD);
+            nullIdx = cat(1, nullIdx, setdiff(repeatIdx, repeatIdx(minIdx))); 
+        end
+        contTrack(nullIdx) = [];
+        % update contTrack associated variables
+        contTrackID = I(contTrack);
+        contTrackD = D(contTrack);
+        
+        % find newly appearing nuclei (unique nuclei that dont have a t0 match in
+        % contTrack)
+        allID = 1:length(cent_t1);
+        newID = setdiff(allID, contTrackID);
+        
+        % update trackmat
+        for i = 1:length(contTrack)
+            y = contTrack(i);
+            rowIdx = getRowIdx(trackmat, t, y);
+            trackmat(rowIdx, t+1) = I(y);
+        end
+        for i = 1:length(newID)
+            z = newID(i);
+            newRow = NaN(1, sizeT);
+            newRow(t+1) = z;
+            trackmat(end+1,:) = newRow;
+        end
+    end
+end
+
+close(h)
+end
+        
+  
+    
+    
+
+
+
+
+
+
+
+
+
+
+
