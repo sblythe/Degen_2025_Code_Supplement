@@ -1,6 +1,6 @@
 
 % load MS2 data
-load('path to MS2 summary structures')
+load('path to MS2 summary structures (hb_WT_summaries.mat in ExperimentalData')
 
 % Specify where you'd like your figure saved
 savePath = 'placeholder/';

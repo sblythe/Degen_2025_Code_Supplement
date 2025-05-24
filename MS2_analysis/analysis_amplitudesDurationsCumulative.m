@@ -1,6 +1,6 @@
 
 % load hbP2-MS2 data
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/summaryStructures/hb_240624.mat')
+load('path to hb_WT_summaries')
 
 
 %% Amplitude, duration, cumulative analysis

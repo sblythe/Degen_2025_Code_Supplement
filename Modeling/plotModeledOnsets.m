@@ -3,7 +3,7 @@ clearvars
 close all
 
 % EGFP-Bicoid measurements for modeling
-load('/Users/eleanordegen/Documents/MATLAB/P2_paper_code/DataStructures/bcdGFP_norm.mat');
+load('path to bcdGFP_norm.mat');
 binned = normTrace;
 
 %% Run and plot a simulation

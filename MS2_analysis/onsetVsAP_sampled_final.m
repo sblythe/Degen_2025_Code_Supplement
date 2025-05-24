@@ -1,7 +1,5 @@
 function [AP_avg_SD APs ontimes] = onsetVsAP_sampled_final(summaries,titleString) 
 
-    close all
-
     % Plot the onsets with even coverage across AP. 
     framesPerMin = 6; 
 

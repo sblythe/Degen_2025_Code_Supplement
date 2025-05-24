@@ -1,15 +1,18 @@
 
-load('path to uniform Bcd MS2 summary structures')
-load('path to WT MS2 summary structures')
+% Load MS2 summary structures (in ExperimentalData)
+load('path to uBcd_hbP2_summaries.mat')
+load('path hb_WT_summaries.mat')
 
 % Specify where you'd like your figure saved
 savePath = 'placeholder/';
 
-%% NOTE: check that when you run the functions below you aren't saving new images (comment out the save command)
+%% Sample onset times from WT and uniform Bcd conditions
+
+% NOTE: check that when you run the functions below you aren't saving new images (comment out the save command)
 [graded_AP_avg_SD, APs, ontimes] = onsetVsAP_sampled_final(hb,'HbP2 MS2 in graded Bicoid');
 [uniform_AP_avg_SD, APs_uniform, ontimes_uniform] = onsetVsAP_sampled_final(uBcd_HbP2_summaries,'HbP2 MS2 in uniform Bicoid');
 
-%%
+%% Plot onset time overlay
 close all
 framesPerMin = 6;
 
@@ -62,7 +65,7 @@ xline(sum(ix)/2,'--','linewidth',0.5)
 
 ylabel('Onset Time (min)','fontsize',8)
 xlabel('AP Position (%)','fontsize',8)
-title('Merge','fontsize',8)
+title('\it{hbP2-MS2}','fontsize',8)
 
 xlim([20 80])
 xticks(20:10:80)

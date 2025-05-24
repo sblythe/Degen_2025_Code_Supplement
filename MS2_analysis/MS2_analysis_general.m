@@ -21,14 +21,8 @@ summarypath = sprintf(strcat(savePath,'summary_%i'),i);
 
 %% Load movie and image analysis parameters
 
-% The parameters for the analysis should be specified in the function
-% build_analysis_parameters_v2.m
-
-% Make parameters structure
-parameters = build_analysis_parameters_v2(filepaths{i});
-
-% Or, load a saved parameters structure
-% load('path to analysis parameters');
+% Load analysis parameters
+load('path to MS2_parameters (included in the MS2_analysis folder)');
 
 % Load movie for analysis
 movie = load_movie(filepaths{i},parameters); % channel1=ms2, channel2=nuc, channel3=brightfield

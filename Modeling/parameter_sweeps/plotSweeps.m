@@ -3,6 +3,8 @@
 close all
 clearvars
 
+% Load sweepVariables.mat
+
 % load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/23-Aug-2024 04:38:07_twoNucs/sweepVariables.mat') % For the paper. With rep. Vmax = 1;
 
 % load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/24-Nov-2024 23:09:01_twoNucs_Vmax1_noRep/sweepVariables.mat') % For the paper. No rep. Vmax = 1

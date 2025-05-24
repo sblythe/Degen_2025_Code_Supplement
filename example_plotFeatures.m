@@ -1,20 +1,29 @@
-
 clearvars
 
-% Load MS2 summary structures
-load('/Users/eleanordegen/Documents/MATLAB/P2_paper_code/ExperimentalData/hb_WT_summaries.mat')
+% Load MS2 summary structures (in ExperimentalData)
+load('path to hb_WT_summaries.mat') % for hbP2-MS2 in WT
 
-%% Generate plots of MS2 features (Figure 2)
+%% Generate plots of MS2 features 
 close all
 
-% Calculate and plot onset time distribution (full)
-onTimeVsAP_final(hb,'hbP2 MS2');
+% Plot onset time distribution (Figure 2)
+onTimeVsAP_final(hb,'\it{hbP2-MS2}');
 
-% Calculate and plot loading rate distribution (full)
-alignedSlopesVsAP_final(hb,'hbP2 MS2');
+% Plot loading rate distribution (Figure 2)
+alignedSlopesVsAP_final(hb,'\it{hbP2-MS2}');
 
-% Calculate and plot fraction of active nuclei
-plotMeanFracActive_final(hb,'hbP2 MS2');
+% Plot fraction of active nuclei (Figure 2)
+plotMeanFracActive_final(hb,'\it{hbP2-MS2}');
 
-% Plot mean onset times per movie
-plotMeanOnsetsByMov(hb,'hbP2 MS2');
+% Plot mean onset times per movie (Supplemental Figure 1)
+plotMeanOnsetsByMov(hb,'Onset time');
+
+% Plot mean loading rates per movie (Supplemental Figure 1)
+plotMeanSlopesByMov(hb,'Loading rate');
+
+% Plot mean fraction of active nuclei (Supplemental Figure 1)
+plotFracActiveForSupplement(hb,'Active nuclei');
+
+% Plot heatmap of fraction of active nuclei measurements (Supplemental Figure 1)
+plotFractionActiveHeatmap(hb,'Active nuclei');
+

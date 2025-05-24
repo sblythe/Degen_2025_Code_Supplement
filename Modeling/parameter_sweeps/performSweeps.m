@@ -4,7 +4,7 @@
 close all
 clearvars
 
-saveDir = '/Users/eleanordegen/Documents/MATLAB/P2_paper_code/';
+saveDir = 'placeholder/';
 
 % Create the parallel pool
 parp = gcp('nocreate');
@@ -13,7 +13,7 @@ if isempty(parp)
 end
 
 % Load the normalized GFP-Bcd dynamics (normTrace)
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/bcdGFP_norm.mat') 
+load('path to bcdGFP_norm.mat') 
 
 % General parameters
 params = struct;
@@ -51,10 +51,10 @@ save(newDir + '/sweepVariables.mat');
 close all
 clearvars
 
-saveDir = '/Users/eleanordegen/Documents/MATLAB/P2_paper_code/';
+saveDir = 'placeholder/';
 
 % Load the normalized GFP-Bcd dynamics (normTrace)
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/bcdGFP_norm.mat') 
+load('path to bcdGFP_norm.mat') 
 
 % General parameters
 params = struct;
@@ -91,7 +91,7 @@ save(newDir + '/sweepVariables.mat');
 close all
 clearvars
 
-saveDir = '/Users/eleanordegen/Documents/MATLAB/P2_paper_code/';
+saveDir = 'placeholder/';
 
 % Create the parallel pool
 parp = gcp('nocreate');
@@ -100,7 +100,7 @@ if isempty(parp)
 end
 
 % Load the normalized GFP-Bcd dynamics (normTrace)
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/bcdGFP_norm.mat') 
+load('path to bcdGFP_norm.mat') 
 
 % General parameters
 params = struct;
@@ -138,7 +138,7 @@ save(newDir + '/sweepVariables.mat');
 close all
 clearvars
 
-saveDir = '/Users/eleanordegen/Documents/MATLAB/P2_paper_code/';
+saveDir = 'placeholder/';
 
 % Create the parallel pool
 parp = gcp('nocreate');
@@ -147,7 +147,7 @@ if isempty(parp)
 end
 
 % Load the normalized GFP-Bcd dynamics (normTrace)
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/bcdGFP_norm.mat') 
+load('path to bcdGFP_norm.mat') 
 
 % General parameters
 params = struct;
@@ -184,10 +184,10 @@ save(newDir + '/sweepVariables.mat');
 close all
 clearvars
 
-saveDir = '/Users/eleanordegen/Documents/MATLAB/P2_paper_code/';
+saveDir = 'placeholder/';
 
 % Load the normalized GFP-Bcd dynamics (normTrace)
-load('/Volumes/BlytheLab_Files/Imaging/Ellie/MS2_Analysis_new/modeling/ForPaper/bcdGFP_norm.mat') 
+load('path to bcdGFP_norm.mat') 
 
 % General parameters
 params = struct;
