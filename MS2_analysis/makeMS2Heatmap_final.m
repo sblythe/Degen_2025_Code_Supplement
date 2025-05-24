@@ -6,7 +6,7 @@ load('path to MS2 summary structures (hb_WT_summaries.mat in ExperimentalData')
 savePath = 'placeholder/';
 
 
-%% Plot MS2 onset time sorted heatmap
+%% Plot MS2 onset time sorted heatmap (Figure 2A)
 close all
 
 cmap1 = [linspace(0.0118,0.0588,120)' linspace(0.0196,0.6549,120)' linspace(0.4314,1,120)'];

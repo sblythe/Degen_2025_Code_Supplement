@@ -1,9 +1,10 @@
 
-% load hbP2-MS2 data
-load('path to hb_WT_summaries')
+%% load hbP2-MS2 data
+load('path to hb_WT_summaries.mat (in ExperimentalData)')
 
 
-%% Amplitude, duration, cumulative analysis
+%% Amplitude, duration, cumulative analysis (used for Supplemental Figure 2)
+
 % Filter and combine datasets
 mega = combineFiltMS2(hb); % AP position tags in column one
 APs = mega(:,1);
@@ -114,41 +115,6 @@ set(f,'units','centimeters','position',[50,25,5,4.5])
 
 % To save the figure: uncomment the line below and specify the file path savePath
 % exportgraphics(f,strcat(savePath,'amplitudeVsAP.tif'),'Resolution',300,'BackgroundColor','white')
-
-%% Plot the amplitudes, filtered by onsets
-framesPerMin = 6;
-
-minOnset = 0;
-maxOnset = 20;
-onsets_min = onsets_nonan./framesPerMin;
-maxes_range = maxes_nonan(onsets_min>minOnset & onsets_min<=maxOnset);
-APs_range = AP_nonan(onsets_min>minOnset & onsets_min<=maxOnset);
-
-% Calculate rolling average and plot
-rollAvg = movmean(maxes_range(APs_range<=borderAP),100);
-rollSD = movstd(maxes_range(APs_range<=borderAP),100);
-plotAP = APs_range(APs_range<=borderAP)*100;
-
-
-f = figure;
-p = scatter(APs_range*100,maxes_range,5,'k','o','filled'); % plot the point
-hold on;
-shadedErrorBar(plotAP,rollAvg,rollSD,[100,149,237]./255,1,0.4) % corn flower blue: 100,149,237
-alpha(p,0.06)
-ylabel('Intensity (AU)','fontsize',8)
-xlabel('AP Position (%)','fontsize',8)
-title('Amplitude','fontsize',8)
-
-xlim([20 80])
-xticks(20:20:80)
-xticklabels(20:20:80)
-ylim([0 2000])
-ax=gca;
-ax.Box='off';
-ax.XAxis.FontSize = 7; % 7 pt font for tick labels
-ax.YAxis.FontSize = 7;
-ax.LineWidth = 0.5;
-set(f,'units','centimeters','position',[50,25,5,4.5])
 
 
 %% Plot the durations
@@ -267,9 +233,6 @@ R = corrplot(test);
 
 %% Plot the times to amplitude (starting at t = 0)
 close all
-
-figure;
-imagesc(recordTimes)
 
 framesPerMin = 6;
 
@@ -396,7 +359,7 @@ ax.YAxis.FontSize = 7;
 ax.LineWidth = 0.5;
 set(f,'units','centimeters','position',[50,25,5,4.5])
 
-exportgraphics(f,strcat(savePath,'sumVsAP.tif'),'Resolution',300,'BackgroundColor','white')
+% exportgraphics(f,strcat(savePath,'sumVsAP.tif'),'Resolution',300,'BackgroundColor','white')
 
 %% Scatter plot of duration vs. summed output
 f = figure;
