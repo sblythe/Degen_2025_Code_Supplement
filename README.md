@@ -19,7 +19,7 @@ Analysis of raw imaging data requires manual determination of the bounds of NC13
 ## Saving processed data
 **`MS2_analysis_general.m`** saves two data structures per file processed: `analysis.mat` and `summary.mat`. `analysis.mat` contains all data structures produced by the analysis, while `summary.mat` contains processed data including a matrix that reports the per-nucleus MS2 focus intensity across NC13. After processing multiple `.lif` files, per experiment, a cell array of summary structures was created for future analysis steps. 
 
-These cell arrays are included in ExperimentalData:
+Cell arrays of summary structures are included in `.\Degen_2025_CodeSupplement\ExperimentalData\`:
 - `hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed hbP2-MS2.
 - `hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed hbP2+1xZelda MS2.
 - `zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed hbP2-MS2.
