@@ -45,7 +45,7 @@ The following functions plot the fractions of active nuclei, onset times, and lo
 - **`gradedVsUniformOnsetsVsAP_final.m`** (not a function, run the three code sections in order)
  
 ## Amplitude, duration, total output
-The script **`analysis_amplitudesDurationsCummulative.m`** calculates and plots transcriptional durations, amplitudes, and total outputs, among other transcriptional features. This script requires loading `hb_WT_summaries.mat` but can easily be adapted to run on another array of summary structures included in `ExperimentalData` by renaming the variable `hb` on line 9.
+The script **`analysis_amplitudesDurationsCummulative.m`** calculates and plots transcriptional durations, amplitudes, and total outputs, among other transcriptional features. This script requires loading `hb_WT_summaries.mat` but can easily be adapted to run on another array of summary structures included in `~/Degen_2025_CodeSupplement/ExperimentalData/` by renaming the variable `hb` on line 9.
 
 In **`analysis_amplitudesDurationsCummulative.m`**, code sections 1 and 2 must be run in sequence to load a summary array of choice and calculate transcriptional features. The remaining code sections can be run out of order to plot the desired transcriptional features. This code generates the plots included in Supplemental Figure S2.
 
