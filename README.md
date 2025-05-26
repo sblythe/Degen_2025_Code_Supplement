@@ -12,7 +12,7 @@ MATLAB R2022a was used in the writing and running of all scripts. To perform the
 Working directory for analyzing raw imaging data: `~/Degen_2025_CodeSupplement/MS2_analysis/`
 
 ## Running the preliminary analysis
-Imaging files produced by our microscope (Leica `.lif` files) were processed using the script **`MS2_analysis_general.m`** included in `MS2_analysis`. This script draws upon parameter values specified in `MS2_parameters.mat` to segment nuclei, extract the intensity of MS2 foci, and track nuclei over nuclear cycle (NC) 13. The script calls functions included in `~/Degen_2025_CodeSupplement/Blythe_Lab_Image_Analysis_ED/`. 
+Imaging files produced by our microscope (Leica `.lif` files) were processed using the script **`MS2_analysis_general.m`** included in `~/Degen_2025_CodeSupplement/MS2_analysis/`. This script draws upon parameter values specified in `MS2_parameters.mat` to segment nuclei, extract the intensity of MS2 foci, and track nuclei over nuclear cycle (NC) 13. The script calls functions included in `~/Degen_2025_CodeSupplement/Blythe_Lab_Image_Analysis_ED/`. 
 
 Analysis of raw imaging data requires manual determination of the bounds of NC13, corresponding to the frames at which the first nucleus enters anaphase 12 (the start of NC13) and the first nucleus enters anaphase 13 (the end of NC13). See the methods section of the paper for further details on how the image processing was performed.
  
