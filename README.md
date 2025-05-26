@@ -31,7 +31,7 @@ Working directory for calculating transcriptional features: `.\Degen_2025_Code_S
 In the main text, we report on our analysis of the following transcriptional features: fraction of active nuclei, onset time, Pol II loading rate, duration, amplitude, and total output. `.\Degen_2025_Code_Supplement\MS2_analysis\` contains scripts that calculate and plot these features.
  
 ## Fraction active, onset time, loading rate
-Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string corresponding to a plot title as inputs. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in `.\Degen_2025_Code_Supplement\ExperimentalData\` (renaming `hb` to correspond to the data structure of choice).
+Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string specifying a plot title as inputs. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in `.\Degen_2025_Code_Supplement\ExperimentalData\` (renaming `hb` to correspond to the data structure of choice).
 
 The following functions plot the fractions of active nuclei, onset times, and loading rates:
 - **`onTimeVsAP_final.m`**
