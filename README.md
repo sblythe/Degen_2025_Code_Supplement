@@ -18,10 +18,10 @@ Imaging files produced by our microscope (Leica .lif files) were processed using
 **`MS2_analysis_general.m`** saves two data structures per file processed: `analysis.mat` and `summary.mat`. `analysis.mat` contains all data structures produced by the analysis, while `summary.mat` contains processed data including a matrix that reports the per-nucleus MS2 focus intensity across NC13. After processing multiple .lif files, per experiment, a cell array of summary structures was created for future analysis steps. 
 
 These cell arrays are included in ExperimentalData:
-`hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed hbP2-MS2.
-`hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed hbP2+1xZelda MS2.
-`zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed hbP2-MS2.
- `uBcd_HbP2_summaries.mat` contains an array of summary structures corresponding to 19 uniform-Bicoid embryos that expressed hbP2-MS2.
+- `hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed hbP2-MS2.
+- `hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed hbP2+1xZelda MS2.
+- `zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed hbP2-MS2.
+- `uBcd_HbP2_summaries.mat` contains an array of summary structures corresponding to 19 uniform-Bicoid embryos that expressed hbP2-MS2.
  
 # Determination of transcriptional features
 Working directory for calculating transcriptional features: `.\Degen_2025_Code_Supplement\MS2_analysis`
@@ -32,31 +32,32 @@ In the main text, we report on our analysis of the following transcriptional fea
 Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string corresponding to a plot title as input. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in ExperimentalData (renaming `hb` to correspond to the data structure of choice).
 
 The following functions plot fractions active, onset times, and loading rates:
-**`onTimeVsAP_final.m`**
-**`alignedSlopesVsAP_final.m`**
-**`plotMeanFracActive_final.m`**
-**`plotMeanOnsetsByMov.m`**
-**`plotMeanSlopesByMov.m`**
-**`plotFracActiveForSupplement.m`**
-**`plotFractionActiveHeatmap.m`**
-**`onsetVsAP_sampled_final.m`**
-**`gradedVsUniformOnsetsVsAP_final.m`** (not a function, run the three code sections in order)
+- **`onTimeVsAP_final.m`**
+- **`alignedSlopesVsAP_final.m`**
+- **`plotMeanFracActive_final.m`**
+- **`plotMeanOnsetsByMov.m`**
+- **`plotMeanSlopesByMov.m`**
+- **`plotFracActiveForSupplement.m`**
+- **`plotFractionActiveHeatmap.m`**
+- **`onsetVsAP_sampled_final.m`**
+- **`gradedVsUniformOnsetsVsAP_final.m`** (not a function, run the three code sections in order)
  
 ## Amplitude, duration, total output
-- The script **`analysis_amplitudesDurationsCummulative.m`** calculates and plots transcriptional durations, amplitudes, and total outputs, among other transcriptional features. This script requires loading `hb_WT_summaries.mat` but can easily be adapted to run on another array of summary structures included in ExperimentalData by renaming the variable `hb` on line 9.
-- In **`analysis_amplitudesDurationsCummulative.m`**, code sections 1 and 2 must be run in sequence to load a summary array of choice and calculate transcriptional features. The remaining code sections can be run out of order to plot the desired transcriptional features. This code generates the plots included in Supplemental Figure S2.
+The script **`analysis_amplitudesDurationsCummulative.m`** calculates and plots transcriptional durations, amplitudes, and total outputs, among other transcriptional features. This script requires loading `hb_WT_summaries.mat` but can easily be adapted to run on another array of summary structures included in ExperimentalData by renaming the variable `hb` on line 9.
+
+In **`analysis_amplitudesDurationsCummulative.m`**, code sections 1 and 2 must be run in sequence to load a summary array of choice and calculate transcriptional features. The remaining code sections can be run out of order to plot the desired transcriptional features. This code generates the plots included in Supplemental Figure S2.
 
 ## Heatmap of MS2 dynamics
 Load `hb_WT_summaries.mat` and then run code section 2 of **`makeMS2Heatmap_final.m`** to plot a heatmap of per-nucleus MS2 dynamics.
 
 ## Helper functions
 The following functions are called by the scripts in MS2_analysis and must be included in the MATLAB path for the plotting functions to run:
-**`fractionActiveNuclei.m`**
-**`sortOnTimesByAP.m`**
-**`filterTracks_v4.m`**
-**`combineFiltMS2.m`**
-**`bin2D.m`**
-**`shadedErrorBar.m`**
+- **`fractionActiveNuclei.m`**
+- **`sortOnTimesByAP.m`**
+- **`filterTracks_v4.m`**
+- **`combineFiltMS2.m`**
+- **`bin2D.m`**
+- **`shadedErrorBar.m`**
 
 **`shadedErrorBar.m`** is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar. It is included in this repository to allow users to easily run the functions that call it.
 
@@ -71,11 +72,11 @@ For a detailed description of the modeling approaches, see the Modeling Suppleme
 **`plotModeledOnsets.m`** can be run to generate the plots in Figure 4B & D, Figure 6 D & G, Modeling Supplement Figure SM3 A, D, & G, and Modeling Supplement Figure SM5 A, C, & E.
 
 Running a simulation requires the following additional functions:
-**`runSSA.m`** (function that runs the simulation)
-**`createBcdGradient.m`** (function that calculates the Bicoid gradient)
+- **`runSSA.m`** (function that runs the simulation)
+- **`createBcdGradient.m`** (function that calculates the Bicoid gradient)
 
 ## Parameter sweeps
-Run **`performSweeps.m`** to perform parameter sweeps, and `**plotSweeps.m**` to plot the parameter sweep results. The file paths in **`plotSweeps.m`** will have to be adjusted to correspond to the directories where your parameter sweep results were saved. **`plotSweeps.m`** can be used to generate the plots in Modeling Supplement Figure SM3 B, C, E, F, & H-K, Figure SM4 A-C, Figure SM6 A-C, and Figure SM7 A-D.
+Run **`performSweeps.m`** to perform parameter sweeps, and **`plotSweeps.m`** to plot the parameter sweep results. The file paths in **`plotSweeps.m`** will have to be adjusted to correspond to the directories where your parameter sweep results were saved. **`plotSweeps.m`** can be used to generate the plots in Modeling Supplement Figure SM3 B, C, E, F, & H-K, Figure SM4 A-C, Figure SM6 A-C, and Figure SM7 A-D.
 
 ## Additional function
 **`shadedErrorBar.m`** is again included so a user just has to change their working directory to `.\Degen_2025_Code_Supplement\Modeling\` to run and plot simulations. **`shadedErrorBar.m`** is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar.
