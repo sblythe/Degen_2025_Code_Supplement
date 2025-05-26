@@ -3,7 +3,7 @@ This repository includes the code used in Degen et al., _Cell Reports_, 2025 for
  
 Instructions on how to reproduce the analyses and modeling results presented in the main text are included in this document.
  
-Please contact [degeneleanor@gmail.com] with any questions or comments.
+Please contact degeneleanor@gmail.com with any questions or comments.
  
 # Set up
 MATLAB R2022a was used in the writing and running of all scripts. To perform the initial processing of the raw MS2 imaging data, the Image Processing, Parallel Computing, and Statistics and Machine Learning MATLAB toolboxes are required. Running parameter sweeps requires the Parallel Computing toolbox. Analysis of MS2 transcriptional features following the initial image processing steps does not require any specific toolboxes. All scripts can be run after the installation of MATLAB and the necessary toolboxes.
@@ -58,7 +58,7 @@ The following functions are called by the scripts in MS2_analysis and must be in
 `**bin2D.m**`
 `**shadedErrorBar.m**`
 
-`**shadedErrorBar.m**` is a slightly modified version of the function from [https://github.com/raacampbell/shadedErrorBar]. It is included in this repository to allow users to easily run the functions that call it.
+`**shadedErrorBar.m**` is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar. It is included in this repository to allow users to easily run the functions that call it.
 
 # Modeling transcriptional onset times
 Working directory for running the two-state model of transcriptional activation: `.\Degen_2025_Code_Supplement\Modeling\`
@@ -78,4 +78,4 @@ Running a simulation requires the following additional functions:
 Run `**performSweeps.m**` to perform parameter sweeps, and `**plotSweeps.m**` to plot the parameter sweep results. The file paths in `**plotSweeps.m**` will have to be adjusted to correspond to the directories where your parameter sweep results were saved. `**plotSweeps.m**` can be used to generate the plots in Modeling Supplement Figure SM3 B, C, E, F, & H-K, Figure SM4 A-C, Figure SM6 A-C, and Figure SM7 A-D.
 
 ## Additional function
-`**shadedErrorBar.m**` is again included so a user just has to change their working directory to `.\Degen_2025_Code_Supplement\Modeling\` to run and plot simulations. `**shadedErrorBar.m**` is a slightly modified version of the function from [https://github.com/raacampbell/shadedErrorBar].
+`**shadedErrorBar.m**` is again included so a user just has to change their working directory to `.\Degen_2025_Code_Supplement\Modeling\` to run and plot simulations. `**shadedErrorBar.m**` is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar.
