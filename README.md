@@ -20,15 +20,15 @@ Analysis of raw imaging data requires manual determination of the bounds of NC13
 **`MS2_analysis_general.m`** saves two data structures per file processed: `analysis.mat` and `summary.mat`. `analysis.mat` contains all data structures produced by the analysis, while `summary.mat` contains processed data including a matrix that reports the per-nucleus MS2 focus intensity across NC13. After processing multiple `.lif` files, per experiment, a cell array of summary structures was created for future analysis steps. 
 
 Cell arrays of summary structures are included in `.\Degen_2025_CodeSupplement\ExperimentalData\`:
-- `hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed hbP2-MS2.
-- `hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed hbP2+1xZelda MS2.
-- `zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed hbP2-MS2.
-- `uBcd_HbP2_summaries.mat` contains an array of summary structures corresponding to 19 uniform-Bicoid embryos that expressed hbP2-MS2.
+- `hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed _hbP2-MS2_.
+- `hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed _hbP2+1xZelda MS2_.
+- `zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed _hbP2-MS2_.
+- `uBcd_HbP2_summaries.mat` contains an array of summary structures corresponding to 19 uniform-Bicoid embryos that expressed _hbP2-MS2_.
  
 # Determination of transcriptional features
 Working directory for calculating transcriptional features: `.\Degen_2025_Code_Supplement\MS2_analysis\`
 
-In the main text, we report on our analysis of the following transcriptional features: fraction of active nuclei, onset time, Pol II loading rate, duration, amplitude, and total output. `.\Degen_2025_Code_Supplement\MS2_analysis` contains scripts that calculate and plot these features.
+In the main text, we report on our analysis of the following transcriptional features: fraction of active nuclei, onset time, Pol II loading rate, duration, amplitude, and total output. `.\Degen_2025_Code_Supplement\MS2_analysis\` contains scripts that calculate and plot these features.
  
 ## Fraction active, onset time, loading rate
 Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string corresponding to a plot title as inputs. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in `.\Degen_2025_Code_Supplement\ExperimentalData\` (renaming `hb` to correspond to the data structure of choice).
