@@ -3,7 +3,7 @@ This repository includes the code used in Degen et al., _bioRxiv_, 2025 for the 
  
 Instructions on how to reproduce the analyses and modeling results presented in the main text are included in this document.
  
-Please contact degeneleanor@gmail.com with any questions or comments.
+Please contact degeneleanor@gmail.com or shelby.blythe@northwestern.edu with any questions or comments.
  
 # Set up
 MATLAB R2022a was used in the writing and running of all scripts. To perform the initial processing of the raw MS2 imaging data, the Image Processing, Parallel Computing, and Statistics and Machine Learning MATLAB toolboxes are required. Running parameter sweeps requires the Parallel Computing toolbox. Analysis of MS2 transcriptional features following the initial image processing steps does not require any specific toolboxes. All scripts can be run after the installation of MATLAB and the necessary toolboxes.
