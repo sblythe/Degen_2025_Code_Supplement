@@ -9,29 +9,29 @@ Please contact degeneleanor@gmail.com or shelby.blythe@northwestern.edu with any
 MATLAB R2022a was used in the writing and running of all scripts. To perform the initial processing of the raw MS2 imaging data, the Image Processing, Parallel Computing, and Statistics and Machine Learning MATLAB toolboxes are required. Running parameter sweeps requires the Parallel Computing toolbox. Analysis of MS2 transcriptional features following the initial image processing steps does not require any specific toolboxes. All scripts can be run after the installation of MATLAB and the necessary toolboxes.
  
 # Analysis of raw imaging data
-Working directory for analyzing raw imaging data: `.\Degen_2025_CodeSupplement\MS2_analysis\`
+Working directory for analyzing raw imaging data: `~/Degen_2025_CodeSupplement/MS2_analysis/`
 
 ## Running the preliminary analysis
-Imaging files produced by our microscope (Leica `.lif` files) were processed using the script **`MS2_analysis_general.m`** included in `MS2_analysis`. This script draws upon parameter values specified in `MS2_parameters.mat` to segment nuclei, extract the intensity of MS2 foci, and track nuclei over nuclear cycle (NC) 13. The script calls functions included in `Blythe_Lab_Image_Analysis_ED`. 
+Imaging files produced by our microscope (Leica `.lif` files) were processed using the script **`MS2_analysis_general.m`** included in `MS2_analysis`. This script draws upon parameter values specified in `MS2_parameters.mat` to segment nuclei, extract the intensity of MS2 foci, and track nuclei over nuclear cycle (NC) 13. The script calls functions included in `~/Degen_2025_CodeSupplement/Blythe_Lab_Image_Analysis_ED/`. 
 
 Analysis of raw imaging data requires manual determination of the bounds of NC13, corresponding to the frames at which the first nucleus enters anaphase 12 (the start of NC13) and the first nucleus enters anaphase 13 (the end of NC13). See the methods section of the paper for further details on how the image processing was performed.
  
 ## Saving processed data
 **`MS2_analysis_general.m`** saves two data structures per file processed: `analysis.mat` and `summary.mat`. `analysis.mat` contains all data structures produced by the analysis, while `summary.mat` contains processed data including a matrix that reports the per-nucleus MS2 focus intensity across NC13. After processing multiple `.lif` files, per experiment, a cell array of summary structures was created for future analysis steps. 
 
-Cell arrays of summary structures are included in `ExperimentalData`:
+Cell arrays of summary structures are included in `~/Degen_2025_CodeSupplement/ExperimentalData/`:
 - `hb_WT_summaries.mat` contains an array of summary structures corresponding to 19 imaged wild type embryos that expressed _hbP2-MS2_.
 - `hz1_summaries.mat` contains an array of summary structures corresponding to 17 imaged wild type embryos that expressed _hbP2+1xZelda MS2_.
 - `zld_67_summaries.mat` contains an array of summary structures corresponding to 14 imaged Zelda-RNAi embryos that expressed _hbP2-MS2_.
 - `uBcd_HbP2_summaries.mat` contains an array of summary structures corresponding to 19 uniform-Bicoid embryos that expressed _hbP2-MS2_.
  
 # Determination of transcriptional features
-Working directory for calculating transcriptional features: `.\Degen_2025_Code_Supplement\MS2_analysis\`
+Working directory for calculating transcriptional features: `~/Degen_2025_CodeSupplement/MS2_analysis/`
 
-In the main text, we report on our analysis of the following transcriptional features: fraction of active nuclei, onset time, Pol II loading rate, duration, amplitude, and total output. `MS2_analysis` contains scripts that calculate and plot these features.
+In the main text, we report on our analysis of the following transcriptional features: fraction of active nuclei, onset time, Pol II loading rate, duration, amplitude, and total output. `~/Degen_2025_CodeSupplement/MS2_analysis/` contains scripts that calculate and plot these features.
  
 ## Fraction active, onset time, loading rate
-Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string specifying a plot title as inputs. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in `ExperimentalData` (renaming the variable `hb` to correspond to the data structure of choice).
+Scripts for analyzing fraction of active nuclei, onset time, and loading rate take an array of summary structures (such as `hb_WT_summaries.mat`) and a string specifying a plot title as inputs. The script **`example_plotFeatures.m`** demonstrates how to produce the plots of Figure 2C-E and Supplemental Figure S1 using `hb_WT_summaries.mat`. If you wish to analyze additional datasets, replace `hb_WT_summaries.mat` with any of the other arrays of summary structures included in `~/Degen_2025_CodeSupplement/ExperimentalData/` (renaming the variable `hb` to correspond to the data structure of choice).
 
 The following functions plot the fractions of active nuclei, onset times, and loading rates:
 - **`onTimeVsAP_final.m`**
@@ -53,7 +53,7 @@ In **`analysis_amplitudesDurationsCummulative.m`**, code sections 1 and 2 must b
 Load `hb_WT_summaries.mat` and then run code section 2 of **`makeMS2Heatmap_final.m`** to plot a heatmap of per-nucleus MS2 dynamics.
 
 ## Helper functions
-The following functions are called by the scripts in `MS2_analysis` and must be included in the MATLAB path for the plotting functions to run:
+The following functions are called by the scripts in `~/Degen_2025_CodeSupplement/MS2_analysis/` and must be included in the MATLAB path for the plotting functions to run:
 - **`fractionActiveNuclei.m`**
 - **`sortOnTimesByAP.m`**
 - **`filterTracks_v4.m`**
@@ -64,12 +64,12 @@ The following functions are called by the scripts in `MS2_analysis` and must be 
 **`shadedErrorBar.m`** is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar. It is included in this repository to allow users to easily run the functions that call it.
 
 # Modeling transcriptional onset times
-Working directory for running the two-state model of transcriptional activation: `.\Degen_2025_Code_Supplement\Modeling\`
+Working directory for running the two-state model of transcriptional activation: `~/Degen_2025_CodeSupplement/Modeling/`
 
 For a detailed description of the modeling approaches, see the Modeling Supplement of Degen et al, 2025.
 
 ## Running a simulation
-**`plotModeledOnsets.m`** runs and plots single simulations. It requires first loading an array of normalized EGFP-Bicoid measurements (`bcdGFP_norm.mat` included in `ExperimentalData`). After loading `bcdGFP_norm.mat` in code section 1, run the simulation and plot onset times by running code section 2. On line 12 you can specify which model type you’d like to run (Linear, Michaelis-Menten, Hill, or Nucleosome-dependent), and on line 13 you can specify whether you’d like the model to take the dynamics of DNA replication into account.
+**`plotModeledOnsets.m`** runs and plots single simulations. It requires first loading an array of normalized EGFP-Bicoid measurements (`bcdGFP_norm.mat` included in `~/Degen_2025_CodeSupplement/ExperimentalData/`). After loading `bcdGFP_norm.mat` in code section 1, run the simulation and plot onset times by running code section 2. On line 12 you can specify which model type you’d like to run (Linear, Michaelis-Menten, Hill, or Nucleosome-dependent), and on line 13 you can specify whether you’d like the model to take the dynamics of DNA replication into account.
 
 **`plotModeledOnsets.m`** can be run to generate the plots in Figure 4B & D, Figure 6 D & G, Modeling Supplement Figure SM3 A, D, & G, and Modeling Supplement Figure SM5 A, C, & E.
 
@@ -81,4 +81,4 @@ Running a simulation requires the following additional functions:
 Run **`performSweeps.m`** to perform parameter sweeps, and **`plotSweeps.m`** to plot the parameter sweep results. The file paths in **`plotSweeps.m`** will have to be adjusted to correspond to the directories where your parameter sweep results were saved. **`plotSweeps.m`** can be used to generate the plots in Modeling Supplement Figure SM3 B, C, E, F, & H-K, Figure SM4 A-C, Figure SM6 A-C, and Figure SM7 A-D.
 
 ## Additional function
-**`shadedErrorBar.m`** is again included so a user just has to change their working directory to `.\Degen_2025_Code_Supplement\Modeling\` to run and plot simulations. **`shadedErrorBar.m`** is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar.
+**`shadedErrorBar.m`** is again included so a user just has to change their working directory to `~/Degen_2025_CodeSupplement/Modeling/` to run and plot simulations. **`shadedErrorBar.m`** is a slightly modified version of the function from https://github.com/raacampbell/shadedErrorBar.
